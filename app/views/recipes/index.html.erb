@@ -1,34 +1,21 @@
 <h1>Listing recipes</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Prep time</th>
-      <th>Elapsed time</th>
-      <th>Ingredients</th>
-      <th>Equipment</th>
-      <th>Steps</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= recipe.name %></td>
-        <td><%= recipe.description %></td>
-        <td><%= recipe.prep_time %></td>
-        <td><%= recipe.elapsed_time %></td>
-        <td><%= recipe.ingredients %></td>
-        <td><%= recipe.equipment %></td>
-        <td><%= recipe.steps %></td>
-        <td><%= link_to 'Show', recipe %></td>
-        <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-        <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr class='<%= cycle('list_line_odd','list_line_even') %>'>
+        <td><%= image_tag(recipe.main_image_url, class: 'list_image') if recipe.main_image_url.present? %></td>
+        <td class="list_description">
+          <dl>
+            <dt><%= recipe.name %> <%= recipe.display_time %></dt>
+            <dd><%= truncate(strip_tags(recipe.description), length: 80) %></dd>
+          </dl>
+        </td>
+        <td class="list_actions">
+           <%= link_to 'Show', recipe %>
+           <%= link_to 'Edit', edit_recipe_path(recipe) %>
+           <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+         </td>
       </tr>
     <% end %>
   </tbody>

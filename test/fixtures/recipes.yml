@@ -2,6 +2,8 @@
 
 one:
   name: MyString
+  main_image_url: MyImage.png
+  original_source: MyText
   description: MyText
   prep_time: MyText
   elapsed_time: MyText
@@ -11,6 +13,8 @@ one:
 
 two:
   name: MyString
+  main_image_url: MyImage.png
+  original_source: MyText
   description: MyText
   prep_time: MyText
   elapsed_time: MyText
