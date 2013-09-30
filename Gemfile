@@ -32,6 +32,22 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development, :test do
+  # I use this to keep my secret key safely off github
+  gem 'dotenv-rails'
+
+  # test-running gems
+  gem 'term-ansicolor'
+  gem 'turn'
+  gem 'shoulda'
+  gem 'mocha'
+
+  # metrics-based gems
+  gem 'flog'       # complexity
+  gem 'flay'       # duplication
+  gem 'turbulence' # churn vs complexity
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
