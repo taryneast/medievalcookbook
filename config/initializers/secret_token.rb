@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Medievalcookbook::Application.config.secret_key_base = 'fb63a10bfec732ce7d5014943b9cf2d202f9da463a854db1663ba00af1db647711ae93321d0f349a580fbb9521ef38d8dc016d6764d84a88d0a6286bcd2299e2'
+Medievalcookbook::Application.config.secret_key_base = ENV['RAILS_SECRET_KEY_BASE']
