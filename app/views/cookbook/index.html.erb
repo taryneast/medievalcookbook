@@ -1,2 +1,11 @@
-<h1>Cookbook#index</h1>
-<p>Find me in app/views/cookbook/index.html.erb</p>
+<h1>Cookbook</h1>
+
+<% @recipes.each do |recipe| %>
+  <div class="recipe">
+    <%= image_tag(recipe.main_image_url) if recipe.main_image_url %>
+    <h3><%= link_to(recipe.name,recipe) %></h3>
+    <%= content_tag(:h5,recipe.display_time) if recipe.display_time %>
+    <p><%= sanitize(truncate(recipe.description, length: 500)) %></p>
+    <p><%= sanitize(truncate(recipe.ingredients, length: 500)) %></p>
+  </div>
+<% end %>
