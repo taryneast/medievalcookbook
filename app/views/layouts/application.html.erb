@@ -7,8 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body class='<%= controller.controller_name %>'>
-
-<%= yield %>
-
+  <div id="banner">
+    Banner goes here
+  </div>
+  <div id="columns">
+    <div id="navbar">
+      <ul>
+        <li>stuff</li>
+        <li>here</li>
+        <li>eventually</li>
+      </ul>
+    </div>
+    <div id="main">
+      <%= content_tag(:p, notice, id: 'notice') if notice %>
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>
