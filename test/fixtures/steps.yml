@@ -1,12 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  recipe_id: 1
   image_url: MyString
   title: MyString
   decription: MyText
   order: 1
 
 two:
+  recipe_id: 1
   image_url: MyString
   title: MyString
   decription: MyText

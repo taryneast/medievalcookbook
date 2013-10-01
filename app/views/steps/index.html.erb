@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Recipe</th>
       <th>Image url</th>
       <th>Title</th>
       <th>Decription</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @steps.each do |step| %>
       <tr>
+        <td><%= step.recipe_id %></td>
         <td><%= step.image_url %></td>
         <td><%= step.title %></td>
         <td><%= step.decription %></td>
