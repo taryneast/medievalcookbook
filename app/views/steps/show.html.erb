@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @step.image_url %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @step.title %>
+</p>
+
+<p>
+  <strong>Decription:</strong>
+  <%= @step.decription %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @step.order %>
+</p>
+
+<%= link_to 'Edit', edit_step_path(@step) %> |
+<%= link_to 'Back', steps_path %>

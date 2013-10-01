@@ -1,4 +1,6 @@
 Medievalcookbook::Application.routes.draw do
+  resources :steps
+
   get "cookbook/index"
   resources :recipes
 
