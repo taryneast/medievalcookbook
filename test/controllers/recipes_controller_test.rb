@@ -46,6 +46,23 @@ class RecipesControllerTest < ActionController::TestCase
       assert_redirected_to recipe_path(assigns(:recipe))
     end
 
+    should "create a recipe with embedded steps" do
+      step = steps(:one)
+      assert_difference('Recipe.count') do
+        assert_difference('Step.count') do
+          post :create, recipe: { description: @recipe.description, elapsed_time: @recipe.elapsed_time, equipment: @recipe.equipment, ingredients: @recipe.ingredients, main_image_url: @recipe.main_image_url, name: @recipe.name, original_source: @recipe.original_source, prep_time: @recipe.prep_time, 
+            steps_attributes: { '0' => { description: step.description, image_url: step.image_url, order: step.order, title: step.title } } }
+        end
+      end
+
+
+      the_recipe = assigns(:recipe)
+      assert_not_nil the_recipe
+      assert the_recipe.steps.present?
+
+      assert_redirected_to recipe_path(assigns(:recipe))
+    end
+
     should "fail to create an invalid recipe" do
       assert_no_difference('Recipe.count') do
         post :create, recipe: { description: @recipe.description, elapsed_time: @recipe.elapsed_time, equipment: @recipe.equipment, ingredients: @recipe.ingredients, main_image_url: @recipe.main_image_url, name: nil, original_source: @recipe.original_source, prep_time: @recipe.prep_time }
@@ -95,6 +112,38 @@ class RecipesControllerTest < ActionController::TestCase
 
       @recipe.reload
       assert_equal new_name, @recipe.name, "should have persisted the name change"
+    end
+
+    should "update embedded steps in a recipe" do
+      step = steps(:two)
+
+      old_steps = @recipe.steps
+      assert old_steps.present?, "should have one step already from fixtures"
+      old_step = old_steps.first
+      old_name = old_step.title
+      new_name = old_name + "abc"
+
+      # post an update that updates the name of the existing step, and also adds a new step
+      assert_difference('Step.count') do
+        patch :update, id: @recipe, recipe: { description: @recipe.description, elapsed_time: @recipe.elapsed_time, equipment: @recipe.equipment, ingredients: @recipe.ingredients, main_image_url: @recipe.main_image_url, name: @recipe.name, original_source: @recipe.original_source, prep_time: @recipe.prep_time, 
+           steps_attributes: { '0' => {id: old_step.id, description: old_step.description, image_url: old_step.image_url, order: old_step.order, title: new_name}, 
+                               '1' => {description: step.description, image_url: step.image_url, order: step.order, title: step.title}} }
+      end
+
+      the_recipe = assigns(:recipe)
+      assert_not_nil the_recipe
+      assert_equal @recipe.id, the_recipe.id, "should have found the one we asked for"
+
+      @recipe.reload
+      new_steps = @recipe.steps
+
+      assert new_steps.present?, "should have some kind of steps now"
+      assert_equal 2, new_steps.count, "should have 2 steps now"
+
+      assert new_steps.map(&:title).include?(new_name), "should have a step with the newly updated name"
+      assert !new_steps.map(&:title).include?(old_name), "should *NOT* have a step with the old name"
+
+      assert new_steps.map(&:title).include?(step.title), "should have a step with the new step's title"
     end
 
     should "fail to update a recipe with invalid data" do

@@ -3,13 +3,13 @@
 one:
   recipe: :one
   image_url: MyString
-  title: MyString
-  description: MyText
+  title: Step 1
+  description: Description for step 1
   order: 1
 
 two:
   recipe: :two
   image_url: MyString
-  title: MyString
-  description: MyText
+  title: Step 2
+  description: Description for step 2
   order: 1
