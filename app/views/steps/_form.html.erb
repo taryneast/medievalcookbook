@@ -4,7 +4,7 @@
   <% else %>
   <div class="field">
     <%= f.label :recipe_id %><br>
-    <%= f.select :recipe_id, Recipe.all %>
+    <%= f.collection_select :recipe_id, Recipe.all, :id, :name %>
   </div>
   <% end %>
   <div class="field">

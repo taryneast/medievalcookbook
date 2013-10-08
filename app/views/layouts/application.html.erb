@@ -11,13 +11,7 @@
     Banner goes here
   </div>
   <div id="columns">
-    <div id="navbar">
-      <ul>
-        <li>stuff</li>
-        <li>here</li>
-        <li>eventually</li>
-      </ul>
-    </div>
+    <%= render :partial => 'layouts/navbar' %>
     <div id="main">
       <%= content_tag(:p, notice, id: 'notice') if notice %>
       <%= yield %>
