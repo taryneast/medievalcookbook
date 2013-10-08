@@ -1,6 +1,6 @@
 
-  <% if @recipe.present? && !@recipe.new_record? %>
-    <%= f.hidden_field :recipe_id, :value => @recipe.id %>
+  <% if @recipe.present? %>
+    <%= f.hidden_field :recipe_id, :value => @recipe.id if !@recipe.new_record? %>
   <% else %>
   <div class="field">
     <%= f.label :recipe_id %><br>
