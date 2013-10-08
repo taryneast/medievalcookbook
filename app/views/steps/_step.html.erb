@@ -1,0 +1,6 @@
+  <div class="step">
+    <%= image_tag(step.image_url) if step.image_url %>
+    <%= content_tag(:h4, step.title) if step.title.present? %>
+    <p><%= sanitize(step.description) %></p>
+  </div>
+

@@ -1,5 +1,8 @@
 class Recipe < ActiveRecord::Base
-  validates :name, :ingredients, :steps, presence: true
+  has_many :steps, dependent: :destroy
+  accepts_nested_attributes_for :steps
+
+  validates :name, :ingredients, presence: true
   validates :main_image_url, allow_blank: true, format: {
       with: %r{\.(gif|jpg|jpeg|png)\Z}i,
       message: 'must be a gif, jpg or png'

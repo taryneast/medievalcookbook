@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class StepTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  context "creating a step" do
+    should belong_to(:recipe)
+
+    should validate_presence_of(:recipe)
+  end
+
 end

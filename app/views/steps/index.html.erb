@@ -4,10 +4,8 @@
   <thead>
     <tr>
       <th>Recipe</th>
-      <th>Image url</th>
+      <th>Step</th>
       <th>Title</th>
-      <th>Decription</th>
-      <th>Order</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,11 +15,9 @@
   <tbody>
     <% @steps.each do |step| %>
       <tr>
-        <td><%= step.recipe_id %></td>
-        <td><%= step.image_url %></td>
-        <td><%= step.title %></td>
-        <td><%= step.decription %></td>
+        <td><%= link_to step.recipe.name, step.recipe %></td>
         <td><%= step.order %></td>
+        <td><%= step.title %></td>
         <td><%= link_to 'Show', step %></td>
         <td><%= link_to 'Edit', edit_step_path(step) %></td>
         <td><%= link_to 'Destroy', step, method: :delete, data: { confirm: 'Are you sure?' } %></td>

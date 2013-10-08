@@ -1,6 +1,12 @@
 <h1>Editing step</h1>
 
-<%= render 'form' %>
+<%= form_for(@step) do |f| %>
+  <%= render 'form', {:f => f} %>
+
+   <div class="actions">
+    <%= f.submit name: 'Update' %>
+  </div> 
+<% end %>
 
 <%= link_to 'Show', @step %> |
 <%= link_to 'Back', steps_path %>

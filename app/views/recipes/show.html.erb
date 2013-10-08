@@ -40,10 +40,8 @@
   <%= @recipe.equipment %>
 </p>
 
-<p>
-  <strong>Steps:</strong>
-  <%= @recipe.steps %>
-</p>
+<p> <strong>Steps:</strong> </p>
+  <%= render partial: 'steps/step', collection: @recipe.steps if @recipe.steps.present? %>
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Recipes', recipes_path %>

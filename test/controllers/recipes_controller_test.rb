@@ -40,7 +40,7 @@ class RecipesControllerTest < ActionController::TestCase
 
     should "create a valid recipe" do
       assert_difference('Recipe.count') do
-        post :create, recipe: { description: @recipe.description, elapsed_time: @recipe.elapsed_time, equipment: @recipe.equipment, ingredients: @recipe.ingredients, main_image_url: @recipe.main_image_url, name: @recipe.name, original_source: @recipe.original_source, prep_time: @recipe.prep_time, steps: @recipe.steps }
+        post :create, recipe: { description: @recipe.description, elapsed_time: @recipe.elapsed_time, equipment: @recipe.equipment, ingredients: @recipe.ingredients, main_image_url: @recipe.main_image_url, name: @recipe.name, original_source: @recipe.original_source, prep_time: @recipe.prep_time }
       end
 
       assert_redirected_to recipe_path(assigns(:recipe))
@@ -48,7 +48,7 @@ class RecipesControllerTest < ActionController::TestCase
 
     should "fail to create an invalid recipe" do
       assert_no_difference('Recipe.count') do
-        post :create, recipe: { description: @recipe.description, elapsed_time: @recipe.elapsed_time, equipment: @recipe.equipment, ingredients: @recipe.ingredients, main_image_url: @recipe.main_image_url, name: nil, original_source: @recipe.original_source, prep_time: @recipe.prep_time, steps: @recipe.steps }
+        post :create, recipe: { description: @recipe.description, elapsed_time: @recipe.elapsed_time, equipment: @recipe.equipment, ingredients: @recipe.ingredients, main_image_url: @recipe.main_image_url, name: nil, original_source: @recipe.original_source, prep_time: @recipe.prep_time }
 
       end
 
@@ -80,25 +80,25 @@ class RecipesControllerTest < ActionController::TestCase
     should "update a recipe with valid data" do
       old_name = @recipe.name
       new_name = old_name + '1234'
-      patch :update, id: @recipe, recipe: { description: @recipe.description, elapsed_time: @recipe.elapsed_time, equipment: @recipe.equipment, ingredients: @recipe.ingredients, main_image_url: @recipe.main_image_url, name: new_name, original_source: @recipe.original_source, prep_time: @recipe.prep_time, steps: @recipe.steps }
+      patch :update, id: @recipe, recipe: { description: @recipe.description, elapsed_time: @recipe.elapsed_time, equipment: @recipe.equipment, ingredients: @recipe.ingredients, main_image_url: @recipe.main_image_url, name: new_name, original_source: @recipe.original_source, prep_time: @recipe.prep_time }
       assert_redirected_to recipe_path(assigns(:recipe))
     end
     should "update our recipe" do
       old_name = @recipe.name
       new_name = old_name + '1234'
 
-      patch :update, id: @recipe, recipe: { description: @recipe.description, elapsed_time: @recipe.elapsed_time, equipment: @recipe.equipment, ingredients: @recipe.ingredients, main_image_url: @recipe.main_image_url, name: new_name, original_source: @recipe.original_source, prep_time: @recipe.prep_time, steps: @recipe.steps }
+      patch :update, id: @recipe, recipe: { description: @recipe.description, elapsed_time: @recipe.elapsed_time, equipment: @recipe.equipment, ingredients: @recipe.ingredients, main_image_url: @recipe.main_image_url, name: new_name, original_source: @recipe.original_source, prep_time: @recipe.prep_time }
 
       the_recipe = assigns(:recipe)
       assert_not_nil the_recipe
       assert_equal @recipe.id, the_recipe.id, "should have found the one we asked for"
 
       @recipe.reload
-      assert_equal new_name, @recipe.name, "shoudl have persisted the name change"
+      assert_equal new_name, @recipe.name, "should have persisted the name change"
     end
 
     should "fail to update a recipe with invalid data" do
-      patch :update, id: @recipe, recipe: { description: @recipe.description, elapsed_time: @recipe.elapsed_time, equipment: @recipe.equipment, ingredients: @recipe.ingredients, main_image_url: @recipe.main_image_url, name: nil, original_source: @recipe.original_source, prep_time: @recipe.prep_time, steps: @recipe.steps }
+      patch :update, id: @recipe, recipe: { description: @recipe.description, elapsed_time: @recipe.elapsed_time, equipment: @recipe.equipment, ingredients: @recipe.ingredients, main_image_url: @recipe.main_image_url, name: nil, original_source: @recipe.original_source, prep_time: @recipe.prep_time }
 
       assert_response :success
       assert render_template('edit'), "should re-display the 'edit' template"

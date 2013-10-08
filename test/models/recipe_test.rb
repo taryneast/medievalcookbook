@@ -3,9 +3,10 @@ require 'test_helper'
 class RecipeTest < ActiveSupport::TestCase
   context "creating a recipe" do
 
+    should have_many(:steps)
+
     should validate_presence_of(:name)
     should validate_presence_of(:ingredients)
-    should validate_presence_of(:steps)
 
     ['lalala.jpg','lalala.jpeg','something.gif','coolthing.png'].each do |good_url|
       should allow_value(good_url).for(:main_image_url).with_message('must be a gif, jpg or png')

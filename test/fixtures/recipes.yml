@@ -9,7 +9,6 @@ one:
   elapsed_time: MyText
   ingredients: MyText
   equipment: MyText
-  steps: MyText
 
 two:
   name: MyString
@@ -20,4 +19,3 @@ two:
   elapsed_time: MyText
   ingredients: MyText
   equipment: MyText
-  steps: MyText
