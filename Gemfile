@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 
 # for monitoring of performance
 gem 'newrelic_rpm'
@@ -35,7 +33,17 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :production, :staging do
+  # heroku requires postgres instead of sqlite
+  gem 'pg'
+  # heroku says this is a useful gem
+  gem 'rails_12factor'
+end
+
 group :development, :test do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+
   # I use this to keep my secret key safely off github
   gem 'dotenv-rails'
 
@@ -62,3 +70,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+
+ruby '1.9.3'
