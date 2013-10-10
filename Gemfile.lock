@@ -69,6 +69,7 @@ GEM
     mocha (0.14.0)
       metaclass (~> 0.0.1)
     multi_json (1.7.9)
+    newrelic_rpm (3.6.8.164)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -150,6 +151,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   mocha
+  newrelic_rpm
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc
