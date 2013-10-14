@@ -45,10 +45,19 @@
   </div>
   <div class="field">
     <%= f.label :steps %><br>
-    <%= f.fields_for :steps do |g|  %>
-      <div class="sub-section">
-        <%= render 'steps/form', {:f => g} %>
-      </div>
+    <script type="text/javascript">
+      function remove_gracefully(element) {
+        element.fadeOut(); /* hide it elegantly first */
+        element.remove();  /* remove from DOM */
+      }
+    </script>
+    <% @recipe.steps.each do |step| %>
+      <%= div_for step do %>
+        <%= f.fields_for step do |g|  %>
+          <%= render 'steps/form', {:f => g} %>
+          <%= ajax_x_button step, :step %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
   <div class="actions">

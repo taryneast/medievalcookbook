@@ -57,6 +57,7 @@ class StepsController < ApplicationController
     @step.destroy
     respond_to do |format|
       format.html { redirect_to steps_url }
+      format.js
       format.json { head :no_content }
     end
   end

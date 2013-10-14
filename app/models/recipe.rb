@@ -1,5 +1,5 @@
 class Recipe < ActiveRecord::Base
-  has_many :steps, dependent: :destroy
+  has_many :steps, dependent: :destroy, validate: true, autosave: true
   accepts_nested_attributes_for :steps
 
   validates :name, :ingredients, presence: true
