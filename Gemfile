@@ -49,7 +49,7 @@ group :development, :test do
 
   # test-running gems
   gem 'term-ansicolor'
-  gem 'turn'
+  #gem 'turn' #Note: turn doesn't play nice with simplecov
   gem 'shoulda'
   gem 'mocha'
 
@@ -57,6 +57,10 @@ group :development, :test do
   gem 'flog'       # complexity
   gem 'flay'       # duplication
   gem 'turbulence' # churn vs complexity
+  gem 'simplecov'
+  # https://github.com/kina/simplecov-rcov-text
+  gem 'simplecov-rcov-text'  
+  gem 'metric_fu'
 end
 
 # Use ActiveModel has_secure_password

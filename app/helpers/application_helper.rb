@@ -5,7 +5,7 @@ module ApplicationHelper
   # real, saved one.
   def ajax_x_button(model,div_class)
     if model.new_record?
-      # if we're a new instance - just close the surrounding div 
+      # if we're a new instance - just close the surrounding div
       link_to 'X', '#', :onclick => "$(this).closest('.#{div_class}').fadeOut(function() {$(this).remove()});return false;"
     else
       # if we're a saved instance of the model - make it go through the
