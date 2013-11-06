@@ -24,4 +24,4 @@ production:
   database: medievalcookbook_production
   pool: 5
   username: medievalcookbook
-  password:  
+  password: 

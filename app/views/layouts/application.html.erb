@@ -9,11 +9,15 @@
 <body class='<%= controller.controller_name %>'>
   <div id="banner">
     Banner goes here
+    <div style="float:right">
+      <%= render 'layouts/user_links' %>
+    </div>
   </div>
   <div id="columns">
     <%= render :partial => 'layouts/navbar' %>
     <div id="main">
-      <%= content_tag(:p, notice, id: 'notice') if notice %>
+      <%= content_tag(:div, notice, id: 'notice') if notice %>
+      <%= content_tag(:div, alert, id: 'alert') if alert %>
       <%= yield %>
     </div>
   </div>

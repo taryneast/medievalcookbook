@@ -3,6 +3,8 @@ require 'test_helper'
 class StepsControllerTest < ActionController::TestCase
   setup do
     @step = steps(:one)
+    # all step-controller actions require signin first
+    sign_in users(:jane)
   end
 
   test "should get index" do

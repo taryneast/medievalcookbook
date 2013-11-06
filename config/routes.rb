@@ -1,4 +1,9 @@
 Medievalcookbook::Application.routes.draw do
+  devise_for :users
+  # resources :comments
+  # resources :categories
+  # resources :tags
+
   resources :steps
 
   get "cookbook/index"

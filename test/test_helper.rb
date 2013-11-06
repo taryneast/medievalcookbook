@@ -2,6 +2,9 @@ ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
+# better integration testing
+require 'capybara/rails'
+
 # code coverage tool
 require 'simplecov'
 SimpleCov.start 'rails'
@@ -16,4 +19,19 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+end
+
+class ActionDispatch::Integrationtest
+  # add capybara config
+  include Capybara::DSL
+
+  def teardown
+    Capybara.reset_sessions!
+    Capybara.use_default_driver
+  end
+end
+
+# add devise test helpers to let us sign-in etc
+class ActionController::TestCase
+  include Devise::TestHelpers
 end

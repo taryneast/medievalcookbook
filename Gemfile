@@ -28,6 +28,10 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+
+# authentication
+gem 'devise'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -40,18 +44,13 @@ group :production, :staging do
   gem 'rails_12factor'
 end
 
+# gems for both dev and test
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 
   # I use this to keep my secret key safely off github
   gem 'dotenv-rails'
-
-  # test-running gems
-  gem 'term-ansicolor'
-  #gem 'turn' #Note: turn doesn't play nice with simplecov
-  gem 'shoulda'
-  gem 'mocha'
 
   # metrics-based gems
   gem 'flog'       # complexity
@@ -61,6 +60,17 @@ group :development, :test do
   # https://github.com/kina/simplecov-rcov-text
   gem 'simplecov-rcov-text'  
   gem 'metric_fu'
+end
+
+# test-only gems
+group :test do
+  # test-running gems
+  gem 'term-ansicolor' # colourise the terminla output
+  #gem 'turn' #Note: turn doesn't play nice with simplecov
+  gem 'shoulda'
+  gem 'mocha'
+  
+  gem 'capybara'
 end
 
 # Use ActiveModel has_secure_password
